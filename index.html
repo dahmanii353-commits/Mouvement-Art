@@ -92,9 +92,31 @@
         }
 
         .nav-logo {
-            color: #ff6b35;
-            font-size: 1.5rem;
-            font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    padding: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-logo img:hover {
+    transform: scale(1.1) rotate(10deg);
+    filter: brightness(1.2);
+}
+
+@media (max-width: 768px) {
+    .nav-logo img {
+        height: 35px;
+        width: 35px;
+    }
+}
         }
 
         .nav-links {
@@ -391,15 +413,9 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            .nav-logo img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%; /* cercle parfait */
-    background: linear-gradient(45deg, #ff6b35, #f7931e); /* couleurs style breakdance */
-    padding: 5px; /* espace entre image et bord */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* ombre légère */
-    transition: all 0.3s ease;
-}
+      <div class="nav-logo">
+        <img src="favicon.png" alt="Logo Mouvement & Art">
+      </div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#organigramme">Structure</a></li>
