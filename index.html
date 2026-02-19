@@ -6,6 +6,7 @@
     <title>Mouvement&Art - Breakdance & Culture Urbaine</title>
     <link rel="icon" type="image/png" href="./favicon.png?v=5">
     <link rel="shortcut icon" href="./favicon.png?v=5">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -406,6 +407,105 @@
             40% { transform: translateX(-50%) translateY(-10px); }
             60% { transform: translateX(-50%) translateY(-5px); }
         }
+        .organigramme-street {
+          background: #121212;
+          border-radius: 20px;
+          padding: 3rem 2rem;
+          max-width: 900px;
+          margin: 2rem auto;
+          color: #f7931e; /* orange urbain */
+          box-shadow: 0 0 20px #ff6b35, 0 0 40px #f7931e inset;
+          font-family: 'Oswald', sans-serif;
+        }
+
+        .street-title {
+          font-family: 'Bangers', cursive;
+          font-size: 3.5rem;
+          text-align: center;
+          color: #ff6b35;
+          text-shadow: 2px 2px #000;
+          margin-bottom: 2rem;
+          letter-spacing: 3px;
+        }
+
+        .president-card {
+          text-align: center;
+          margin-bottom: 3rem;
+          border: 3px solid #ff6b35;
+          border-radius: 15px;
+          padding: 2rem;
+          background: #1e1e1e;
+          box-shadow: 0 0 15px #ff6b35;
+          position: relative;
+          clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
+        }
+
+        .president-card img {
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          border: 4px solid #f7931e;
+          margin-bottom: 1rem;
+          object-fit: cover;
+          filter: drop-shadow(0 0 8px #ff6b35);
+        }
+
+        .president-card h3 {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+          color: #ff6b35;
+          text-transform: uppercase;
+        }
+
+        .nickname {
+          font-style: italic;
+          font-weight: 700;
+          color: #ffca3a;
+        }
+
+        .team-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.8rem;
+        } 
+
+        .team-member {
+          background: #222;
+          border: 2px solid #f7931e;
+          border-radius: 15px;
+          padding: 1.5rem 1rem;
+          text-align: center;
+          box-shadow: 0 0 8px #ff6b35;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          clip-path: polygon(5% 0%, 95% 0%, 100% 7%, 100% 93%, 95% 100%, 5% 100%, 0% 93%, 0% 7%);
+        }
+
+        .team-member:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 0 20px #ff6b35, 0 0 40px #f7931e inset;
+        }
+
+        .team-member img {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          border: 3px solid #ff6b35;
+          margin-bottom: 0.7rem;
+          object-fit: cover;
+          filter: drop-shadow(0 0 5px #ff6b35);
+        }
+
+        .team-member h4 {
+          font-size: 1.3rem;
+          margin-bottom: 0.3rem;
+          color: #ff6b35;
+          text-transform: uppercase;
+        }
+
+        .team-member p {
+          font-weight: 600;
+          color: #ffca3a;
+        }
     </style>
 </head>
 <body>
@@ -435,44 +535,39 @@
     </section>
 
     <!-- NOUVEAU - ORGANIGRAMME -->
-    <section id="organigramme" class="section fade-in">
-        <h2 class="section-title"> 🗂️ Notre Structure</h2>
-        <div class="organigramme fade-in">
-            <div class="org-chart">
-                <!-- Président - Remplacez src="photo.jpg" par votre photo -->
-                <div class="org-president">
-                    <img src="photo-president.jpg" alt="Président" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRkY2QjM1IiByeD0iNjAiLz4KPHRleHQgeD0iNjAiIHk9IjY1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QcmVzaWRlbnQ8L3RleHQ+Cjwvc3ZnPgo='">
-                    <h3> Anthony METREL "B-BOY Wu"</h3>
-                    <p>Président & Fondateur</p>
-                </div>
-                <div class="org-line"></div>
-                <div class="org-bureau">
-                    <!-- Remplacez les photos et noms -->
-                    <div class="org-membre">
-                        <img src="photo-vp.jpg" alt="VP" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRkY2QjM1IiByeD0iNDAiLz4KPHRleHQgeD0iNDAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5M4OAgV28gV2luZG1pbGw8L3RleHQ+Cjwvc3ZnPgo='">
-                        <h4> Farès "Accrobate"</h4>
-                        <p>Vice-Président</p>
-                    </div>
-                    <div class="org-membre">
-                        <img src="photo-tresorier.jpg" alt="Trésorier" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRkY2QjM1IiByeD0iNDAiLz4KPHRleHQgeD0iNDAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TYXJhIDIgU3RlcDwvdGV4dD4KPC9zdmc+Cg=='">
-                        <h4> 💰 Mohamed-Amine DAHMANI "B-BOY MAD"</h4>
-                        <p>Trésorier</p>
-                    </div>
-                    <div class="org-membre">
-                        <img src="photo-secretaire.jpg" alt="Coatch" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRkY2QjM1IiByeD0iNDAiLz4KPHRleHQgeD0iNDAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LaWxpYW4gRnJlZXplS2luZzwvdGV4dD4KPC9zdmc+Cg=='">
-                        <h4> 🤸 Nathan "B-BOY TAÏ-LONG"</h4>
-                        <p>Coatch</p>
-                    </div>
-                    <div class="org-membre">
-                        <img src="photo-coach.jpg" alt="Coach" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRkY2QjM1IiByeD0iNDAiLz4KPHRleHQgeD0iNDAiIHk9IjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5OaW5hIFBvd2VyTW92ZTwvdGV4dD4KPC9zdmc+Cg=='">
-                        <h4> 🏋️ Haris "Muscular"</h4>
-                        <p>Coach Pro</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+   <section id="organigramme" class="section">
+  <h2 class="section-title street-title">🗂️ Notre Structure</h2>
+  <div class="organigramme-street">
+    <div class="president-card">
+      <img src="photo-president.jpg" alt="Président" onerror="this.src='fallback.jpg'">
+      <h3>Anthony METREL <span class="nickname">"B-BOY Wu"</span></h3>
+      <p>Président & Fondateur</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="photo-vp.jpg" alt="Vice-Président" onerror="this.src='fallback.jpg'">
+        <h4>Farès <span class="nickname">"Accrobate"</span></h4>
+        <p>Vice-Président</p>
+      </div>
+      <div class="team-member">
+        <img src="photo-tresorier.jpg" alt="Trésorier" onerror="this.src='fallback.jpg'">
+        <h4>💰 Mohamed-Amine <span class="nickname">"B-BOY MAD"</span></h4>
+        <p>Trésorier</p>
+      </div>
+      <div class="team-member">
+        <img src="photo-secretaire.jpg" alt="Coach" onerror="this.src='fallback.jpg'">
+        <h4>🤸 Nathan <span class="nickname">"B-BOY TAÏ-LONG"</span></h4>
+        <p>Coach</p>
+      </div>
+      <div class="team-member">
+        <img src="photo-coach.jpg" alt="Coach Pro" onerror="this.src='fallback.jpg'">
+        <h4>🏋️ Haris <span class="nickname">"Muscular"</span></h4>
+        <p>Coach Pro</p>
+      </div>
+    </div>
+  </div>
+</section>
+    
     <!-- NOUVEAU - EXPLOITS -->
     <section id="exploits" class="section fade-in">
         <h2 class="section-title">🏆 Nos Exploits</h2>
