@@ -64,6 +64,11 @@
     .contact { text-align: center; background: #f0f0f0; padding: 2rem; border-radius: 15px; }
     .contact .cta-button { margin: 0.5rem; }
 
+   /* Ajuste le scroll pour toutes les sections avec nav fixe */
+section {
+    scroll-margin-top: 70px; /* hauteur de la nav fixe */
+}
+
 </style>
 </head>
 <body>
@@ -199,12 +204,15 @@
 </section>
 
 <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-        anchor.addEventListener('click',function(e){
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-        });
+   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const navHeight = document.querySelector('.nav').offsetHeight;
+        const offsetTop = target.offsetTop - navHeight; // ajuste pour la nav fixe
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     });
+});
     window.addEventListener('scroll',()=>{
         const scrolled=window.pageYOffset;
         document.querySelector('.header').style.transform=`translateY(${scrolled*0.3}px)`;
