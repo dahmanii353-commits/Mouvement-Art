@@ -391,9 +391,15 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="favicon.png" alt="Logo Mouvement & Art">
-            </div>
+            .nav-logo img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%; /* cercle parfait */
+    background: linear-gradient(45deg, #ff6b35, #f7931e); /* couleurs style breakdance */
+    padding: 5px; /* espace entre image et bord */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* ombre légère */
+    transition: all 0.3s ease;
+}
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#organigramme">Structure</a></li>
