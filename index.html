@@ -68,17 +68,23 @@
 section {
     scroll-margin-top: 70px; /* hauteur de la nav fixe */
 }
-
+#top {
+    position: absolute;
+    top: 0;
+    height: 1px;
+}
 </style>
 </head>
 <body>
+
+   <div id="top"></div>
 
 <!-- Navigation -->
 <nav class="nav">
 <div class="nav-container">
     <div class="nav-logo"><img src="favicon.png" alt="Logo Mouvement & Art"></div>
     <ul class="nav-links">
-        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#top">Accueil</a></li>
         <li><a href="#organigramme">Structure</a></li>
         <li><a href="#exploits">Exploits</a></li>
         <li><a href="#horaires">Horaires</a></li>
