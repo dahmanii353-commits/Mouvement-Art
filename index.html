@@ -87,6 +87,9 @@ section{scroll-margin-top:100px;}
 </head>
 <body>
 
+<!-- MUSIQUE DE FOND (optionnelle) -->
+<audio id="backgroundMusic" src="Songsite.mp3" autoplay loop></audio>
+
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-container">
@@ -215,43 +218,42 @@ section{scroll-margin-top:100px;}
 
 <!-- SCRIPT -->
 <script>
-// VIDÉOS : ouverture uniquement au clic
+// MODALES VIDEO
 const members = document.querySelectorAll('.org-membre[data-video]');
-const modal = document.getElementById('videoModal');
-const closeBtn = document.querySelector('.close');
+const videoModal = document.getElementById('videoModal');
+const closeVideo = document.querySelector('.close');
 const video = document.getElementById('memberVideo');
 
 members.forEach(member => {
   member.addEventListener('click', () => {
-    const videoSrc = member.getAttribute('data-video');
-    video.querySelector('source').src = videoSrc;
+    const src = member.getAttribute('data-video');
+    video.querySelector('source').src = src;
     video.load();
-    modal.style.display = 'flex';
+    videoModal.style.display = 'flex';
     video.play();
   });
 });
 
-closeBtn.addEventListener('click', () => { video.pause(); modal.style.display='none'; });
-modal.addEventListener('click', e => { if(e.target===modal){ video.pause(); modal.style.display='none'; } });
+closeVideo.addEventListener('click', () => { video.pause(); videoModal.style.display='none'; });
+videoModal.addEventListener('click', e => { if(e.target===videoModal){ video.pause(); videoModal.style.display='none'; } });
 
-// IMAGES : ouverture uniquement au clic
+// MODALES IMAGE
 const eventCards = document.querySelectorAll('.event-card[data-image]');
 const imageModal = document.getElementById('imageModal');
-const imageClose = document.querySelector('.image-close');
+const closeImage = document.querySelector('.image-close');
 const modalImg = imageModal.querySelector('img');
 
 eventCards.forEach(card => {
   card.addEventListener('click', () => {
-    const imgSrc = card.getAttribute('data-image');
-    modalImg.src = imgSrc;
+    modalImg.src = card.getAttribute('data-image');
     imageModal.style.display = 'flex';
   });
 });
 
-imageClose.addEventListener('click', () => { imageModal.style.display='none'; });
+closeImage.addEventListener('click', () => { imageModal.style.display='none'; });
 imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
 
-// NAVIGATION : smooth scroll
+// NAVIGATION SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
