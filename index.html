@@ -112,18 +112,20 @@ body{
 
 /* ================= MODAL VIDEO ================= */
 .modal{
-  display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.8); justify-content:center; align-items:center;
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;
 }
 .modal-content{
-  position:relative; width:90%; max-width:800px; background:#111; border-radius:10px; padding:1rem;
+  position:relative; width:80%; max-width:900px; max-height:80vh;
+  background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;
 }
-.modal-content video{width:100%; height:auto; border-radius:10px;}
+.modal-content video{
+  width:100%; height:100%; object-fit:contain; border-radius:10px; display:block;
+}
 .close{
-  position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;
+  position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;
 }
 
-@media(max-width:768px){.nav-links{display:none;}}
 section{scroll-margin-top:100px;}
 </style>
 </head>
@@ -262,27 +264,41 @@ const modal = document.getElementById('videoModal');
 const closeBtn = document.querySelector('.close');
 const video = document.getElementById('memberVideo');
 
+// Ouvrir modal
 members.forEach(member => {
   member.addEventListener('click', () => {
     const videoSrc = member.getAttribute('data-video');
     video.querySelector('source').src = videoSrc;
-    video.load();  // recharge la vidéo
+    video.load();
     modal.style.display = 'flex';
     video.play();
   });
 });
 
-// fermer modal
+// Fermer modal avec X
 closeBtn.addEventListener('click', () => {
   video.pause();
   modal.style.display = 'none';
 });
 
-// fermer si clique en dehors
-window.addEventListener('click', (e) => {
+// Fermer modal en cliquant à l'extérieur
+modal.addEventListener('click', (e) => {
   if(e.target === modal){
     video.pause();
     modal.style.display = 'none';
+  }
+});
+
+// Fermer modal en scrollant vers le bas
+let lastScroll = window.pageYOffset;
+window.addEventListener('scroll', () => {
+  if(modal.style.display === 'flex'){
+    const currentScroll = window.pageYOffset;
+    if(currentScroll > lastScroll){
+      video.pause();
+      modal.style.display = 'none';
+    }
+    lastScroll = currentScroll;
   }
 });
 </script>
