@@ -9,13 +9,12 @@
 
 <style>
 :root{
-  --black:#111111;      /* Jean / pantalon */
-  --orange:#FF6A00;     /* Veste / sweat */
-  --light-gray:#E5E5E5; /* T-shirt / hoodie */
+  --black:#111111;      
+  --orange:#FF6A00;     
+  --light-gray:#E5E5E5; 
   --white:#F9FAFB;
   --dark-text:#111827;
 }
-
 *{margin:0; padding:0; box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -25,15 +24,8 @@ body{
 }
 
 /* NAVIGATION */
-.nav{
-  position:fixed; top:0; width:100%;
-  background:rgba(17,17,17,0.95); backdrop-filter:blur(10px);
-  padding:1rem 0; z-index:1000;
-}
-.nav-container{
-  max-width:1200px; margin:auto; padding:0 2rem;
-  display:flex; justify-content:space-between; align-items:center;
-}
+.nav{position:fixed; top:0; width:100%; background:rgba(17,17,17,0.95); backdrop-filter:blur(10px); padding:1rem 0; z-index:1000;}
+.nav-container{max-width:1200px; margin:auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center;}
 .nav-logo img{height:45px; border-radius:50%;}
 .nav-links{list-style:none; display:flex; gap:2rem;}
 .nav-links a{color:var(--white); text-decoration:none; transition:0.3s;}
@@ -41,110 +33,59 @@ body{
 @media(max-width:768px){.nav-links{display:none;}}
 
 /* HEADER */
-.header{
-  height:100vh;
-  background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg") center/cover no-repeat;
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
-  text-align:center; color:var(--white); padding:0 2rem; position:relative;
-}
-.logo{
-  font-family:'Bangers',cursive;
-  font-size:clamp(3rem,8vw,6rem);
-  background:linear-gradient(45deg,var(--orange),var(--light-gray));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  letter-spacing:5px;
-}
+.header{height:100vh; background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg") center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white); padding:0 2rem; position:relative;}
+.logo{font-family:'Bangers',cursive; font-size:clamp(3rem,8vw,6rem); background:linear-gradient(45deg,var(--orange),var(--light-gray)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:5px;}
 .slogan{margin:1rem 0 2rem; font-size:1.2rem; opacity:0.9;}
-.cta-button{
-  padding:1rem 2.5rem; border:none; border-radius:50px;
-  background:var(--orange); color:white; font-weight:bold;
-  text-decoration:none; transition:0.3s; display:inline-block;
-}
-.cta-button:hover{
-  transform:translateY(-4px); box-shadow:0 10px 25px rgba(255,106,0,0.4);
-}
+.cta-button{padding:1rem 2.5rem; border:none; border-radius:50px; background:var(--orange); color:white; font-weight:bold; text-decoration:none; transition:0.3s; display:inline-block;}
+.cta-button:hover{transform:translateY(-4px); box-shadow:0 10px 25px rgba(255,106,0,0.4);}
 
 /* SECTIONS */
 .section{padding:7rem 0;}
 .container{max-width:1200px; margin:auto; padding:0 2rem; text-align:center;}
 .section-title{font-size:2.2rem; margin-bottom:3rem; position:relative; display:inline-block;}
-.section-title::after{
-  content:""; display:block; height:3px; width:60%; margin:10px auto 0;
-  background:var(--orange);
-}
+.section-title::after{content:""; display:block; height:3px; width:60%; margin:10px auto 0; background:var(--orange);}
 
 /* ORGANIGRAMME */
 #organigramme{background:var(--black); color:var(--white);}
 .org-president img,.org-membre img{width:110px; height:110px; border-radius:50%; object-fit:cover; margin-bottom:1rem; border:3px solid var(--orange);}
 .org-president{margin-bottom:3rem; cursor:pointer;}
 .org-bureau{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem;}
-.org-membre{
-  background:rgba(255,255,255,0.05); padding:1.5rem; border-radius:15px; transition:0.3s; cursor:pointer;
-}
+.org-membre{background:rgba(255,255,255,0.05); padding:1.5rem; border-radius:15px; transition:0.3s; cursor:pointer;}
 .org-membre:hover,.org-president:hover{transform:translateY(-6px); background:rgba(255,255,255,0.1);}
 
 /* HORAIRES */
 #horaires{background:var(--light-gray); color:var(--dark-text);}
 .horaires-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
-.horaire-card{
-  background:white; padding:2rem; border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:0.3s;
-}
+.horaire-card{background:white; padding:2rem; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:0.3s;}
 .horaire-card:hover{transform:translateY(-6px);}
 
 /* EVENEMENTS */
 #evenements{background:var(--black); color:var(--white);}
 .events{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;}
-.event-card{
-  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;
-}
+.event-card{background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;}
 .event-card:hover{transform:translateY(-6px); box-shadow:0 0 20px rgba(255,106,0,0.4);}
-.event-card img{width:100%; height:auto; border-radius:10px; margin-top:1rem; display:none;}
+.event-card img{width:100%; height:auto; border-radius:10px; display:none;}
 
 /* CONTACT */
 #contact{background:var(--light-gray); color:var(--dark-text);}
-.contact-buttons a{
-  margin:0.5rem; display:inline-block; background:var(--orange); color:white;
-  padding:1rem 2rem; border-radius:50px; text-decoration:none; transition:0.3s;
-}
+.contact-buttons a{margin:0.5rem; display:inline-block; background:var(--orange); color:white; padding:1rem 2rem; border-radius:50px; text-decoration:none; transition:0.3s;}
 .contact-buttons a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,106,0,0.4);}
 
 /* MODAL VIDEO */
-.modal{
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;
-}
-.modal-content{
-  position:relative; width:80%; max-width:900px; max-height:80vh;
-  background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;
-}
-.modal-content video{
-  width:100%; height:100%; object-fit:contain; border-radius:10px; display:block;
-}
-.close{
-  position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;
-}
+.modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;}
+.modal-content{position:relative; width:80%; max-width:900px; max-height:80vh; background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;}
+.modal-content video{width:100%; height:100%; object-fit:contain; border-radius:10px; display:block;}
+.close{position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;}
 
 /* MODAL IMAGE */
-.image-modal{
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.85); z-index:10000; display:flex; justify-content:center; align-items:center;
-  padding:1rem;
-}
-.image-modal img{
-  max-width:90%; max-height:90%; border-radius:10px;
-}
-.image-close{
-  position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;
-}
+.image-modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;}
+.image-modal img{max-width:90%; max-height:90%; border-radius:10px;}
+.image-close{position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;}
 
 section{scroll-margin-top:100px;}
 </style>
 </head>
 <body>
-
-<!-- MUSIQUE DE FOND -->
-<audio id="backgroundMusic" src="Songsite.mp3" autoplay loop></audio>
 
 <!-- NAV -->
 <nav class="nav">
@@ -250,7 +191,7 @@ section{scroll-margin-top:100px;}
 <div class="contact-buttons">
   <a href="tel:0652232825">📞 Appeler</a>
   <a href="mailto:wudang@live.fr">✉️ Email</a>
-  <a href="https://www.instagram.com/associationsavoirfaire?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">📸 Instagram</a>
+  <a href="https://www.instagram.com/associationsavoirfaire" target="_blank">📸 Instagram</a>
   <a href="https://www.google.com/maps/search/?api=1&query=Parc+des+Sports,+2+Chau.+de+Ritterhude,+27100+Val-de-Reuil,+France" target="_blank">📍 Adresse</a>
 </div>
 </div>
@@ -274,7 +215,7 @@ section{scroll-margin-top:100px;}
 
 <!-- SCRIPT -->
 <script>
-// Vidéos membres
+// VIDÉOS : ouverture uniquement au clic
 const members = document.querySelectorAll('.org-membre[data-video]');
 const modal = document.getElementById('videoModal');
 const closeBtn = document.querySelector('.close');
@@ -293,33 +234,24 @@ members.forEach(member => {
 closeBtn.addEventListener('click', () => { video.pause(); modal.style.display='none'; });
 modal.addEventListener('click', e => { if(e.target===modal){ video.pause(); modal.style.display='none'; } });
 
-let lastScroll = window.pageYOffset;
-window.addEventListener('scroll', () => {
-  if(modal.style.display==='flex'){
-    const currentScroll = window.pageYOffset;
-    if(currentScroll>lastScroll){ video.pause(); modal.style.display='none'; }
-    lastScroll=currentScroll;
-  }
-});
-
-// Images événements
+// IMAGES : ouverture uniquement au clic
 const eventCards = document.querySelectorAll('.event-card[data-image]');
 const imageModal = document.getElementById('imageModal');
 const imageClose = document.querySelector('.image-close');
 const modalImg = imageModal.querySelector('img');
 
-eventCards.forEach(card=>{
-  card.addEventListener('click', ()=>{
+eventCards.forEach(card => {
+  card.addEventListener('click', () => {
     const imgSrc = card.getAttribute('data-image');
     modalImg.src = imgSrc;
     imageModal.style.display = 'flex';
   });
 });
 
-imageClose.addEventListener('click', ()=>{ imageModal.style.display='none'; });
+imageClose.addEventListener('click', () => { imageModal.style.display='none'; });
 imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
 
-// Smooth scroll nav
+// NAVIGATION : smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
@@ -330,5 +262,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 </script>
+
 </body>
 </html>
