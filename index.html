@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mouvement&Art - Breakdance & Culture Urbaine</title>
-<link rel="icon" type="image/png" href="./Logo1.png">
+<link rel="icon" type="image/png" href="./Logo1.png?v=<?=Date.now()?>">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -33,7 +33,7 @@ body{
 @media(max-width:768px){.nav-links{display:none;}}
 
 /* HEADER */
-.header{height:100vh; background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg") center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white); padding:0 2rem; position:relative;}
+.header{height:100vh; background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg?v=<?=Date.now()?>") center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white); padding:0 2rem; position:relative;}
 .logo{font-family:'Bangers',cursive; font-size:clamp(3rem,8vw,6rem); background:linear-gradient(45deg,var(--orange),var(--light-gray)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:5px;}
 .slogan{margin:1rem 0 2rem; font-size:1.2rem; opacity:0.9;}
 .cta-button{padding:1rem 2.5rem; border:none; border-radius:50px; background:var(--orange); color:white; font-weight:bold; text-decoration:none; transition:0.3s; display:inline-block;}
@@ -87,13 +87,13 @@ section{scroll-margin-top:100px;}
 </head>
 <body>
 
-<!-- AUDIO DE FOND (optionnel) -->
-<audio id="backgroundMusic" src="Songsite.mp3" autoplay loop></audio>
+<!-- AUDIO DE FOND -->
+<audio id="backgroundMusic" src="Songsite.mp3?v=<?=Date.now()?>" autoplay loop></audio>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-container">
-    <div class="nav-logo"><img src="Logo1.png"></div>
+    <div class="nav-logo"><img src="Logo1.png?v=<?=Date.now()?>"></div>
     <ul class="nav-links">
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#organigramme">Structure</a></li>
@@ -116,30 +116,30 @@ section{scroll-margin-top:100px;}
 <div class="container">
 <h2 class="section-title">Organigramme</h2>
 
-<div class="org-president org-membre" data-video="Anthony_presentation.mov">
-<img src="photo-president.jpg">
+<div class="org-president org-membre" data-video="Anthony_presentation.mov?v=<?=Date.now()?>">
+<img src="photo-president.jpg?v=<?=Date.now()?>">
 <h3>Anthony METREL "B-BOY Wu"</h3>
 <p>Président & Fondateur</p>
 </div>
 
 <div class="org-bureau">
-  <div class="org-membre" data-video="Fares_presentation.mov">
-    <img src="photo-vp.jpg">
+  <div class="org-membre" data-video="Fares_presentation.mov?v=<?=Date.now()?>">
+    <img src="photo-vp.jpg?v=<?=Date.now()?>">
     <h4>Farès "Accrobate"</h4>
     <p>Vice-Président</p>
   </div>
-  <div class="org-membre" data-video="Mad_presentation.mov">
-    <img src="photo-tresorier.jpg">
+  <div class="org-membre" data-video="Mad_presentation.mov?v=<?=Date.now()?>">
+    <img src="photo-tresorier.jpg?v=<?=Date.now()?>">
     <h4>Mohamed-Amine "B-BOY MAD"</h4>
     <p>Trésorier</p>
   </div>
-  <div class="org-membre" data-video="Nathan_presentation.mov">
-    <img src="photo-secretaire.jpg">
+  <div class="org-membre" data-video="Nathan_presentation.mov?v=<?=Date.now()?>">
+    <img src="photo-secretaire.jpg?v=<?=Date.now()?>">
     <h4>Nathan "B-BOY TAÏ-LONG"</h4>
     <p>Coach</p>
   </div>
-  <div class="org-membre" data-video="Haris_presentation.mov">
-    <img src="photo-coach.jpg">
+  <div class="org-membre" data-video="Haris_presentation.mov?v=<?=Date.now()?>">
+    <img src="photo-coach.jpg?v=<?=Date.now()?>">
     <h4>Haris "Muscular"</h4>
     <p>Coach Pro</p>
   </div>
@@ -178,10 +178,10 @@ section{scroll-margin-top:100px;}
 <div class="container">
 <h2 class="section-title">Prochains Événements</h2>
 <div class="events">
-  <div class="event-card" data-image="Affichebattle.jpg">
+  <div class="event-card" data-image="Affichebattle.jpg?v=<?=Date.now()?>">
     <h3>🔥 ROOKIES BATTLE #2 </h3>
     <p>Samedi 04 Avril 2026 • 18h00</p>
-    <img src="Affichebattle.jpg" alt="Affiche Battle">
+    <img src="Affichebattle.jpg?v=<?=Date.now()?>" alt="Affiche Battle">
   </div>
 </div>
 </div>
@@ -218,6 +218,8 @@ section{scroll-margin-top:100px;}
 
 <!-- SCRIPT -->
 <script>
+const timestamp = Date.now();
+
 // --- Modales vidéo ---
 const members = document.querySelectorAll('.org-membre[data-video]');
 const videoModal = document.getElementById('videoModal');
@@ -226,11 +228,12 @@ const video = document.getElementById('memberVideo');
 
 members.forEach(member => {
   member.addEventListener('click', () => {
-    const src = member.getAttribute('data-video');
+    let src = member.getAttribute('data-video');
+    if(!src.includes('?')) src += '?v=' + timestamp;
     video.querySelector('source').src = src;
-    video.load();       // charge la vidéo
+    video.load();
     videoModal.style.display = 'flex';
-    video.play();       // ne se joue que au clic
+    video.play();
   });
 });
 
@@ -245,7 +248,9 @@ const modalImg = imageModal.querySelector('img');
 
 eventCards.forEach(card => {
   card.addEventListener('click', () => {
-    modalImg.src = card.getAttribute('data-image');
+    let src = card.getAttribute('data-image');
+    if(!src.includes('?')) src += '?v=' + timestamp;
+    modalImg.src = src;
     imageModal.style.display = 'flex';
   });
 });
@@ -253,7 +258,7 @@ eventCards.forEach(card => {
 closeImage.addEventListener('click', () => { imageModal.style.display='none'; });
 imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
 
-// --- Smooth scroll navigation ---
+// --- Smooth scroll ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
