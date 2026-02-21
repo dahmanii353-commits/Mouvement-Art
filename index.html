@@ -11,11 +11,11 @@
 <style>
 
 :root{
---blue:#0B3D91;       /* Bleu marine (pantalon) */
+--black:#111111;      /* Noir (pantalon) */
 --orange:#FF6A00;     /* Orange vif (veste / sweat) */
---light-gray:#E5E7EB; /* Gris clair (t-shirt / hoodie) */
---dark-text:#111827;
+--light-gray:#E5E5E5; /* Gris clair (t-shirt / hoodie) */
 --white:#F9FAFB;
+--dark-text:#111827;
 }
 
 *{
@@ -40,7 +40,7 @@ color:var(--dark-text);
 position:fixed;
 top:0;
 width:100%;
-background:rgba(11,61,145,0.95); /* bleu marine */
+background:rgba(17,17,17,0.95); /* noir */
 backdrop-filter:blur(10px);
 padding:1rem 0;
 z-index:1000;
@@ -81,7 +81,7 @@ color:var(--orange);
 .header{
 height:100vh;
 background:
-linear-gradient(rgba(11,61,145,0.85),rgba(11,61,145,0.9)),
+linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)),
 url("photo_breakdance.jpeg") center/cover no-repeat;
 display:flex;
 flex-direction:column;
@@ -156,7 +156,7 @@ background:var(--orange);
 /* ================= ORGANIGRAMME ================= */
 
 #organigramme{
-background:var(--blue);
+background:var(--black);
 color:var(--white);
 }
 
@@ -220,7 +220,7 @@ transform:translateY(-6px);
 /* ================= EVENEMENTS ================= */
 
 #evenements{
-background:var(--blue);
+background:var(--black);
 color:var(--white);
 }
 
