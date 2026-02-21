@@ -9,9 +9,9 @@
 
 <style>
 :root{
-  --black:#111111;      /* Pantalon / Jean */
-  --orange:#FF6A00;     /* Veste / Sweat */
-  --light-gray:#E5E5E5; /* T-shirt / Hoodie */
+  --black:#111111;      /* Jean / pantalon */
+  --orange:#FF6A00;     /* Veste / sweat */
+  --light-gray:#E5E5E5; /* T-shirt / hoodie */
   --white:#F9FAFB;
   --dark-text:#111827;
 }
@@ -24,7 +24,7 @@ body{
   color:var(--dark-text);
 }
 
-/* ================= NAV ================= */
+/* NAVIGATION */
 .nav{
   position:fixed; top:0; width:100%;
   background:rgba(17,17,17,0.95); backdrop-filter:blur(10px);
@@ -40,7 +40,7 @@ body{
 .nav-links a:hover{color:var(--orange);}
 @media(max-width:768px){.nav-links{display:none;}}
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header{
   height:100vh;
   background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg") center/cover no-repeat;
@@ -64,7 +64,7 @@ body{
   transform:translateY(-4px); box-shadow:0 10px 25px rgba(255,106,0,0.4);
 }
 
-/* ================= SECTION ================= */
+/* SECTIONS */
 .section{padding:7rem 0;}
 .container{max-width:1200px; margin:auto; padding:0 2rem; text-align:center;}
 .section-title{font-size:2.2rem; margin-bottom:3rem; position:relative; display:inline-block;}
@@ -73,7 +73,7 @@ body{
   background:var(--orange);
 }
 
-/* ================= ORGANIGRAMME ================= */
+/* ORGANIGRAMME */
 #organigramme{background:var(--black); color:var(--white);}
 .org-president img,.org-membre img{width:110px; height:110px; border-radius:50%; object-fit:cover; margin-bottom:1rem; border:3px solid var(--orange);}
 .org-president{margin-bottom:3rem; cursor:pointer;}
@@ -83,7 +83,7 @@ body{
 }
 .org-membre:hover,.org-president:hover{transform:translateY(-6px); background:rgba(255,255,255,0.1);}
 
-/* ================= HORAIRES ================= */
+/* HORAIRES */
 #horaires{background:var(--light-gray); color:var(--dark-text);}
 .horaires-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
 .horaire-card{
@@ -92,17 +92,16 @@ body{
 }
 .horaire-card:hover{transform:translateY(-6px);}
 
-/* ================= EVENEMENTS ================= */
+/* EVENEMENTS */
 #evenements{background:var(--black); color:var(--white);}
 .events{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;}
 .event-card{
-  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s;
-  cursor:pointer;
+  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;
 }
 .event-card:hover{transform:translateY(-6px); box-shadow:0 0 20px rgba(255,106,0,0.4);}
 .event-card img{width:100%; height:auto; border-radius:10px; margin-top:1rem; display:none;}
 
-/* ================= CONTACT ================= */
+/* CONTACT */
 #contact{background:var(--light-gray); color:var(--dark-text);}
 .contact-buttons a{
   margin:0.5rem; display:inline-block; background:var(--orange); color:white;
@@ -110,7 +109,7 @@ body{
 }
 .contact-buttons a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,106,0,0.4);}
 
-/* ================= MODAL VIDEO ================= */
+/* MODAL VIDEO */
 .modal{
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;
@@ -126,7 +125,7 @@ body{
   position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;
 }
 
-/* ================= MODAL IMAGE ================= */
+/* MODAL IMAGE */
 .image-modal{
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.85); z-index:10000; display:flex; justify-content:center; align-items:center;
@@ -144,10 +143,10 @@ section{scroll-margin-top:100px;}
 </head>
 <body>
 
-<!-- AUDIO DE FOND -->
+<!-- MUSIQUE DE FOND -->
 <audio id="backgroundMusic" src="Songsite.mp3" autoplay loop></audio>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-container">
     <div class="nav-logo"><img src="Logo1.png"></div>
@@ -263,7 +262,6 @@ section{scroll-margin-top:100px;}
     <span class="close">&times;</span>
     <video id="memberVideo" controls>
       <source src="" type="video/mp4">
-      Votre navigateur ne supporte pas la vidéo.
     </video>
   </div>
 </div>
@@ -276,12 +274,12 @@ section{scroll-margin-top:100px;}
 
 <!-- SCRIPT -->
 <script>
+// Vidéos membres
 const members = document.querySelectorAll('.org-membre[data-video]');
 const modal = document.getElementById('videoModal');
 const closeBtn = document.querySelector('.close');
 const video = document.getElementById('memberVideo');
 
-// Ouvrir modal vidéo
 members.forEach(member => {
   member.addEventListener('click', () => {
     const videoSrc = member.getAttribute('data-video');
@@ -291,8 +289,10 @@ members.forEach(member => {
     video.play();
   });
 });
+
 closeBtn.addEventListener('click', () => { video.pause(); modal.style.display='none'; });
 modal.addEventListener('click', e => { if(e.target===modal){ video.pause(); modal.style.display='none'; } });
+
 let lastScroll = window.pageYOffset;
 window.addEventListener('scroll', () => {
   if(modal.style.display==='flex'){
@@ -302,7 +302,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Ouvrir modal image
+// Images événements
 const eventCards = document.querySelectorAll('.event-card[data-image]');
 const imageModal = document.getElementById('imageModal');
 const imageClose = document.querySelector('.image-close');
@@ -315,10 +315,11 @@ eventCards.forEach(card=>{
     imageModal.style.display = 'flex';
   });
 });
+
 imageClose.addEventListener('click', ()=>{ imageModal.style.display='none'; });
 imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
 
-// Smooth scroll pour la nav
+// Smooth scroll nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
