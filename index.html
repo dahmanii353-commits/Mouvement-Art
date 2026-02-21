@@ -9,7 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+--dark:#0E0E10;
+--dark2:#111827;
+--light:#F9FAFB;
+--accent:#7C3AED;
+--accent2:#06B6D4;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 html{
 scroll-behavior:smooth;
@@ -17,8 +30,8 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Oswald',sans-serif;
-background:#000;
-color:white;
+background:var(--dark);
+color:var(--light);
 }
 
 /* ================= NAV ================= */
@@ -27,10 +40,11 @@ color:white;
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.95);
+background:rgba(14,14,16,0.85);
+backdrop-filter:blur(10px);
 padding:1rem 0;
 z-index:1000;
-backdrop-filter:blur(8px);
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .nav-container{
@@ -54,18 +68,14 @@ gap:2rem;
 }
 
 .nav-links a{
-color:white;
+color:var(--light);
 text-decoration:none;
 transition:0.3s;
-font-weight:600;
+font-weight:500;
 }
 
 .nav-links a:hover{
-color:gold;
-}
-
-@media(max-width:768px){
-.nav-links{display:none;}
+color:var(--accent2);
 }
 
 /* ================= HEADER ================= */
@@ -73,7 +83,7 @@ color:gold;
 .header{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+linear-gradient(rgba(14,14,16,0.85),rgba(14,14,16,0.9)),
 url("photo_breakdance.jpeg") center/cover no-repeat;
 display:flex;
 flex-direction:column;
@@ -86,33 +96,32 @@ padding:0 2rem;
 .logo{
 font-family:'Bangers',cursive;
 font-size:clamp(3rem,8vw,6rem);
-background:linear-gradient(45deg,gold,#ffcc00);
+background:linear-gradient(45deg,var(--accent),var(--accent2));
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-letter-spacing:4px;
+letter-spacing:5px;
 }
 
 .slogan{
 margin:1rem 0 2rem;
-font-size:1.3rem;
-opacity:0.9;
+font-size:1.2rem;
+opacity:0.8;
 }
 
 .cta-button{
 padding:1rem 2.5rem;
 border:none;
 border-radius:50px;
-background:gold;
-color:black;
+background:linear-gradient(45deg,var(--accent),var(--accent2));
+color:white;
 font-weight:bold;
 text-decoration:none;
 transition:0.3s;
 }
 
 .cta-button:hover{
-background:#ffcc00;
 transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(255,215,0,0.4);
+box-shadow:0 10px 25px rgba(124,58,237,0.4);
 }
 
 /* ================= SECTIONS ================= */
@@ -122,28 +131,28 @@ padding:7rem 2rem;
 max-width:1200px;
 margin:auto;
 text-align:center;
-transition:background 1s ease;
 }
-
-/* ================= TITRES ================= */
 
 .section-title{
-display:inline-block;
-padding:1rem 3rem;
-background:black;
-color:gold;
 font-size:2.2rem;
-border-radius:8px;
-border:2px solid gold;
-letter-spacing:3px;
 margin-bottom:3rem;
+position:relative;
+display:inline-block;
 }
 
-/* ================= ORGANIGRAMME (NOIR FLUIDE) ================= */
+.section-title::after{
+content:"";
+display:block;
+height:3px;
+width:60%;
+margin:10px auto 0;
+background:linear-gradient(90deg,var(--accent),var(--accent2));
+}
+
+/* ================= ORGANIGRAMME ================= */
 
 #organigramme{
-background:linear-gradient(180deg,#000 0%,#0A1F44 100%);
-color:white;
+background:var(--dark2);
 }
 
 .org-president img,
@@ -153,6 +162,7 @@ height:110px;
 border-radius:50%;
 object-fit:cover;
 margin-bottom:1rem;
+border:3px solid var(--accent);
 }
 
 .org-president{
@@ -166,23 +176,23 @@ gap:2rem;
 }
 
 .org-membre{
-background:#111;
+background:rgba(255,255,255,0.03);
 padding:1.5rem;
 border-radius:15px;
-border:1px solid gold;
 transition:0.3s;
+border:1px solid rgba(255,255,255,0.05);
 }
 
 .org-membre:hover{
 transform:translateY(-6px);
-box-shadow:0 0 15px rgba(255,215,0,0.4);
+background:rgba(255,255,255,0.06);
 }
 
-/* ================= HORAIRES (BLANC FLUIDE) ================= */
+/* ================= HORAIRES ================= */
 
 #horaires{
-background:linear-gradient(180deg,#ffffff 0%,#f4f4f4 100%);
-color:#111;
+background:var(--light);
+color:var(--dark);
 }
 
 .horaires-grid{
@@ -195,21 +205,18 @@ gap:2rem;
 background:white;
 padding:2rem;
 border-radius:15px;
-border:1px solid #ddd;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
 transition:0.3s;
 }
 
 .horaire-card:hover{
 transform:translateY(-6px);
-box-shadow:0 5px 20px rgba(0,0,0,0.1);
 }
 
-/* ================= EVENEMENTS (NOIR RETOUR) ================= */
+/* ================= EVENEMENTS ================= */
 
 #evenements{
-background:linear-gradient(180deg,#f4f4f4 0%,#000 40%);
-color:white;
-padding-top:9rem;
+background:var(--dark);
 }
 
 .events{
@@ -219,44 +226,46 @@ gap:2rem;
 }
 
 .event-card{
-background:#111;
+background:rgba(255,255,255,0.04);
 padding:2rem;
 border-radius:15px;
-border:1px solid gold;
 transition:0.3s;
+border:1px solid rgba(255,255,255,0.05);
 }
 
 .event-card:hover{
 transform:translateY(-6px);
-box-shadow:0 0 20px rgba(255,215,0,0.4);
+box-shadow:0 0 20px rgba(124,58,237,0.4);
 }
 
-/* ================= CONTACT (BLANC FINAL) ================= */
+/* ================= CONTACT ================= */
 
 #contact{
-background:linear-gradient(180deg,#000 0%,#ffffff 30%);
-color:#111;
-padding-top:9rem;
+background:var(--dark2);
 }
 
-.contact{
-max-width:1000px;
-margin:auto;
-}
-
-.contact .cta-button{
+.contact a{
 margin:0.5rem;
+display:inline-block;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+.nav-links{
+display:none;
+}
 }
 
 section{
 scroll-margin-top:100px;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
 <nav class="nav">
 <div class="nav-container">
 <div class="nav-logo"><img src="Logo1.png"></div>
@@ -270,14 +279,12 @@ scroll-margin-top:100px;
 </div>
 </nav>
 
-<!-- HEADER -->
 <section id="accueil" class="header">
 <h1 class="logo">MOUVEMENT&ART</h1>
 <p class="slogan">Vivez la culture breakdance • Développez votre style • Rejoignez le Crew</p>
 <a href="#horaires" class="cta-button">Voir les Horaires</a>
 </section>
 
-<!-- ORGANIGRAMME -->
 <section id="organigramme" class="section">
 <h2 class="section-title">Organigramme</h2>
 
@@ -314,10 +321,8 @@ scroll-margin-top:100px;
 </div>
 </section>
 
-<!-- HORAIRES -->
 <section id="horaires" class="section">
 <h2 class="section-title">Horaires</h2>
-
 <div class="horaires-grid">
 <div class="horaire-card">
 <h4>🔥 Débutants</h4>
@@ -325,13 +330,11 @@ scroll-margin-top:100px;
 <p>Mercredi 18h30 - 20h00</p>
 <p>Vendredi 18h00 - 19h30</p>
 </div>
-
 <div class="horaire-card">
 <h4>⚡ Intermédiaires</h4>
 <p>Mardi 19h00 - 21h00</p>
 <p>Jeudi 19h30 - 21h30</p>
 </div>
-
 <div class="horaire-card">
 <h4>👑 Avancés / Battles</h4>
 <p>Samedi 14h00 - 17h00</p>
@@ -339,10 +342,8 @@ scroll-margin-top:100px;
 </div>
 </section>
 
-<!-- EVENEMENTS -->
 <section id="evenements" class="section">
 <h2 class="section-title">Prochains Événements</h2>
-
 <div class="events">
 <div class="event-card">
 <h3>🔥 Battle Mensuel</h3>
@@ -359,14 +360,11 @@ scroll-margin-top:100px;
 </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
-<h2 class="section-title">Rejoignez-nous !</h2>
-
+<section id="contact" class="section">
+<h2 class="section-title">Rejoignez-nous</h2>
 <a href="tel:0634567890" class="cta-button">📞 Appeler</a>
-<a href="mailto:contact@mouvementart.fr" class="cta-button" style="background:#764ba2;">✉️ Email</a>
-<a href="https://instagram.com/mouvementart" class="cta-button" style="background:#667eea;">📸 Instagram</a>
-
+<a href="mailto:contact@mouvementart.fr" class="cta-button">✉️ Email</a>
+<a href="https://instagram.com/mouvementart" class="cta-button">📸 Instagram</a>
 </section>
 
 </body>
