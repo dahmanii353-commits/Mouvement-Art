@@ -11,9 +11,9 @@
 <style>
 
 :root{
---dark:#0E0E10;
+--dark:#0F172A;
 --dark2:#111827;
---light:#F9FAFB;
+--light:#F8FAFC;
 --accent:#7C3AED;
 --accent2:#06B6D4;
 }
@@ -30,8 +30,8 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Oswald',sans-serif;
-background:var(--dark);
-color:var(--light);
+background:var(--light);
+color:#111;
 }
 
 /* ================= NAV ================= */
@@ -40,20 +40,19 @@ color:var(--light);
 position:fixed;
 top:0;
 width:100%;
-background:rgba(14,14,16,0.85);
+background:rgba(15,23,42,0.9);
 backdrop-filter:blur(10px);
 padding:1rem 0;
 z-index:1000;
-border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .nav-container{
 max-width:1200px;
 margin:auto;
+padding:0 2rem;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:0 2rem;
 }
 
 .nav-logo img{
@@ -68,10 +67,9 @@ gap:2rem;
 }
 
 .nav-links a{
-color:var(--light);
+color:white;
 text-decoration:none;
 transition:0.3s;
-font-weight:500;
 }
 
 .nav-links a:hover{
@@ -83,13 +81,14 @@ color:var(--accent2);
 .header{
 height:100vh;
 background:
-linear-gradient(rgba(14,14,16,0.85),rgba(14,14,16,0.9)),
+linear-gradient(rgba(15,23,42,0.85),rgba(15,23,42,0.9)),
 url("photo_breakdance.jpeg") center/cover no-repeat;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+color:white;
 padding:0 2rem;
 }
 
@@ -105,7 +104,7 @@ letter-spacing:5px;
 .slogan{
 margin:1rem 0 2rem;
 font-size:1.2rem;
-opacity:0.8;
+opacity:0.9;
 }
 
 .cta-button{
@@ -117,6 +116,7 @@ color:white;
 font-weight:bold;
 text-decoration:none;
 transition:0.3s;
+display:inline-block;
 }
 
 .cta-button:hover{
@@ -124,12 +124,16 @@ transform:translateY(-4px);
 box-shadow:0 10px 25px rgba(124,58,237,0.4);
 }
 
-/* ================= SECTIONS ================= */
+/* ================= SECTION STRUCTURE ================= */
 
 .section{
-padding:7rem 2rem;
+padding:7rem 0;
+}
+
+.container{
 max-width:1200px;
 margin:auto;
+padding:0 2rem;
 text-align:center;
 }
 
@@ -153,6 +157,7 @@ background:linear-gradient(90deg,var(--accent),var(--accent2));
 
 #organigramme{
 background:var(--dark2);
+color:white;
 }
 
 .org-president img,
@@ -176,23 +181,22 @@ gap:2rem;
 }
 
 .org-membre{
-background:rgba(255,255,255,0.03);
+background:rgba(255,255,255,0.05);
 padding:1.5rem;
 border-radius:15px;
 transition:0.3s;
-border:1px solid rgba(255,255,255,0.05);
 }
 
 .org-membre:hover{
 transform:translateY(-6px);
-background:rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.1);
 }
 
 /* ================= HORAIRES ================= */
 
 #horaires{
 background:var(--light);
-color:var(--dark);
+color:#111;
 }
 
 .horaires-grid{
@@ -217,6 +221,7 @@ transform:translateY(-6px);
 
 #evenements{
 background:var(--dark);
+color:white;
 }
 
 .events{
@@ -226,11 +231,10 @@ gap:2rem;
 }
 
 .event-card{
-background:rgba(255,255,255,0.04);
+background:rgba(255,255,255,0.05);
 padding:2rem;
 border-radius:15px;
 transition:0.3s;
-border:1px solid rgba(255,255,255,0.05);
 }
 
 .event-card:hover{
@@ -242,11 +246,11 @@ box-shadow:0 0 20px rgba(124,58,237,0.4);
 
 #contact{
 background:var(--dark2);
+color:white;
 }
 
-.contact a{
+.contact-buttons a{
 margin:0.5rem;
-display:inline-block;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -286,6 +290,7 @@ scroll-margin-top:100px;
 </section>
 
 <section id="organigramme" class="section">
+<div class="container">
 <h2 class="section-title">Organigramme</h2>
 
 <div class="org-president">
@@ -300,29 +305,29 @@ scroll-margin-top:100px;
 <h4>Farès "Accrobate"</h4>
 <p>Vice-Président</p>
 </div>
-
 <div class="org-membre">
 <img src="photo-tresorier.jpg">
 <h4>Mohamed-Amine "B-BOY MAD"</h4>
 <p>Trésorier</p>
 </div>
-
 <div class="org-membre">
 <img src="photo-secretaire.jpg">
 <h4>Nathan "B-BOY TAÏ-LONG"</h4>
 <p>Coach</p>
 </div>
-
 <div class="org-membre">
 <img src="photo-coach.jpg">
 <h4>Haris "Muscular"</h4>
 <p>Coach Pro</p>
 </div>
 </div>
+</div>
 </section>
 
 <section id="horaires" class="section">
+<div class="container">
 <h2 class="section-title">Horaires</h2>
+
 <div class="horaires-grid">
 <div class="horaire-card">
 <h4>🔥 Débutants</h4>
@@ -340,10 +345,13 @@ scroll-margin-top:100px;
 <p>Samedi 14h00 - 17h00</p>
 </div>
 </div>
+</div>
 </section>
 
 <section id="evenements" class="section">
+<div class="container">
 <h2 class="section-title">Prochains Événements</h2>
+
 <div class="events">
 <div class="event-card">
 <h3>🔥 Battle Mensuel</h3>
@@ -358,13 +366,20 @@ scroll-margin-top:100px;
 <p>12 Avril 2026 • Gratuit pour les membres</p>
 </div>
 </div>
+</div>
 </section>
 
 <section id="contact" class="section">
+<div class="container">
 <h2 class="section-title">Rejoignez-nous</h2>
+
+<div class="contact-buttons">
 <a href="tel:0634567890" class="cta-button">📞 Appeler</a>
 <a href="mailto:contact@mouvementart.fr" class="cta-button">✉️ Email</a>
 <a href="https://instagram.com/mouvementart" class="cta-button">📸 Instagram</a>
+</div>
+
+</div>
 </section>
 
 </body>
