@@ -98,7 +98,7 @@ body{
 #evenements{background:var(--black); color:var(--white);}
 .events{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;}
 .event-card{
-  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s;
+  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;
 }
 .event-card:hover{transform:translateY(-6px); box-shadow:0 0 20px rgba(255,106,0,0.4);}
 
@@ -110,7 +110,7 @@ body{
 }
 .contact-buttons a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,106,0,0.4);}
 
-/* ================= MODAL VIDEO ================= */
+/* ================= MODAL ================= */
 .modal{
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;
@@ -119,8 +119,10 @@ body{
   position:relative; width:80%; max-width:900px; max-height:80vh;
   background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;
 }
-.modal-content video{
-  width:100%; height:100%; object-fit:contain; border-radius:10px; display:block;
+.modal-content video,
+.modal-content img{
+  width:100%; height:100%; object-fit:contain; border-radius:10px;
+  display:block;
 }
 .close{
   position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;
@@ -129,7 +131,6 @@ body{
 section{scroll-margin-top:100px;}
 </style>
 </head>
-
 <body>
 
 <!-- NAVIGATION -->
@@ -208,7 +209,7 @@ section{scroll-margin-top:100px;}
   <div class="horaire-card">
     <h4>👑 Break Confirmé </h4>
     <p>Mardi 20h00 - 21h30</p>
-    <p>Mercedi 20h30 - 21h30</p>
+    <p>Mercredi 20h30 - 21h30</p>
     <p>Vendredi 20h30 - 21h30</p>
   </div>
 </div>
@@ -220,10 +221,10 @@ section{scroll-margin-top:100px;}
 <div class="container">
 <h2 class="section-title">Prochains Événements</h2>
 <div class="events">
-  <div class="event-card">
+  <div class="event-card" data-image="Affichebattle.jpg">
     <h3>🔥 ROOKIES BATTLE #2 </h3>
     <p>Samedi 04 Avril 2026 • 18h00</p>
-    <img src="Affichebattle.jpg">
+  </div>
 </div>
 </div>
 </section>
@@ -236,6 +237,7 @@ section{scroll-margin-top:100px;}
   <a href="tel:0652232825">📞 Appeler</a>
   <a href="mailto:wudang@live.fr">✉️ Email</a>
   <a href="https://www.instagram.com/associationsavoirfaire?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">📸 Instagram</a>
+  <a href="#">📍 Adresse</a>
 </div>
 </div>
 </section>
@@ -251,49 +253,96 @@ section{scroll-margin-top:100px;}
   </div>
 </div>
 
+<!-- MODAL IMAGE -->
+<div id="imageModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="eventImage" src="" alt="Événement">
+  </div>
+</div>
+
 <!-- SCRIPT -->
 <script>
+// ================= VIDEOS MEMBRES =================
 const members = document.querySelectorAll('.org-membre[data-video]');
-const modal = document.getElementById('videoModal');
-const closeBtn = document.querySelector('.close');
+const videoModal = document.getElementById('videoModal');
+const videoClose = videoModal.querySelector('.close');
 const video = document.getElementById('memberVideo');
 
-// Ouvrir modal
 members.forEach(member => {
   member.addEventListener('click', () => {
-    const videoSrc = member.getAttribute('data-video');
-    video.querySelector('source').src = videoSrc;
+    const src = member.getAttribute('data-video');
+    video.querySelector('source').src = src;
     video.load();
-    modal.style.display = 'flex';
+    videoModal.style.display = 'flex';
     video.play();
   });
 });
 
-// Fermer modal avec X
-closeBtn.addEventListener('click', () => {
+videoClose.addEventListener('click', () => {
   video.pause();
-  modal.style.display = 'none';
+  videoModal.style.display = 'none';
 });
-
-// Fermer modal en cliquant à l'extérieur
-modal.addEventListener('click', (e) => {
-  if(e.target === modal){
+videoModal.addEventListener('click', (e) => {
+  if(e.target === videoModal){
     video.pause();
-    modal.style.display = 'none';
+    videoModal.style.display = 'none';
   }
 });
-
-// Fermer modal en scrollant vers le bas
 let lastScroll = window.pageYOffset;
 window.addEventListener('scroll', () => {
-  if(modal.style.display === 'flex'){
+  if(videoModal.style.display === 'flex'){
     const currentScroll = window.pageYOffset;
     if(currentScroll > lastScroll){
       video.pause();
-      modal.style.display = 'none';
+      videoModal.style.display = 'none';
     }
     lastScroll = currentScroll;
   }
+});
+
+// ================= IMAGES EVENEMENTS =================
+const events = document.querySelectorAll('.event-card[data-image]');
+const imageModal = document.getElementById('imageModal');
+const imageClose = imageModal.querySelector('.close');
+const eventImg = document.getElementById('eventImage');
+
+events.forEach(ev => {
+  ev.addEventListener('click', () => {
+    const src = ev.getAttribute('data-image');
+    eventImg.src = src;
+    imageModal.style.display = 'flex';
+  });
+});
+
+imageClose.addEventListener('click', () => {
+  imageModal.style.display = 'none';
+});
+imageModal.addEventListener('click', (e) => {
+  if(e.target === imageModal){
+    imageModal.style.display = 'none';
+  }
+});
+let lastScrollImg = window.pageYOffset;
+window.addEventListener('scroll', () => {
+  if(imageModal.style.display === 'flex'){
+    const currentScroll = window.pageYOffset;
+    if(currentScroll > lastScrollImg){
+      imageModal.style.display = 'none';
+    }
+    lastScrollImg = currentScroll;
+  }
+});
+
+// ================= NAVIGATION SMOOTH SCROLL =================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    const navHeight = document.querySelector('.nav').offsetHeight;
+    const offsetTop = target.offsetTop - navHeight;
+    window.scrollTo({ top: offsetTop, behavior:'smooth' });
+  });
 });
 </script>
 
