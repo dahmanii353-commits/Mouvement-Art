@@ -4,15 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mouvement&Art - Breakdance & Culture Urbaine</title>
-
 <link rel="icon" type="image/png" href="./Logo1.png">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --black:#111111;      /* Noir (jean/pantalon) */
-  --orange:#FF6A00;     /* Orange vif (veste/sweat) */
-  --light-gray:#E5E5E5; /* Gris clair (t-shirt/hoodie) */
+  --black:#111111;      /* Pantalon / Jean */
+  --orange:#FF6A00;     /* Veste / Sweat */
+  --light-gray:#E5E5E5; /* T-shirt / Hoodie */
   --white:#F9FAFB;
   --dark-text:#111827;
 }
@@ -28,8 +27,7 @@ body{
 /* ================= NAV ================= */
 .nav{
   position:fixed; top:0; width:100%;
-  background:rgba(17,17,17,0.95);
-  backdrop-filter:blur(10px);
+  background:rgba(17,17,17,0.95); backdrop-filter:blur(10px);
   padding:1rem 0; z-index:1000;
 }
 .nav-container{
@@ -98,9 +96,11 @@ body{
 #evenements{background:var(--black); color:var(--white);}
 .events{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;}
 .event-card{
-  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;
+  background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s;
+  cursor:pointer;
 }
 .event-card:hover{transform:translateY(-6px); box-shadow:0 0 20px rgba(255,106,0,0.4);}
+.event-card img{width:100%; height:auto; border-radius:10px; margin-top:1rem; display:none;}
 
 /* ================= CONTACT ================= */
 #contact{background:var(--light-gray); color:var(--dark-text);}
@@ -110,31 +110,42 @@ body{
 }
 .contact-buttons a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,106,0,0.4);}
 
-/* ================= MODAL ================= */
+/* ================= MODAL VIDEO ================= */
 .modal{
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;
 }
 .modal-content{
-  position:relative; max-width:90%; max-height:90vh;
+  position:relative; width:80%; max-width:900px; max-height:80vh;
   background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;
 }
-.modal-content video,
-.modal-content img{
-  max-width:80vw;
-  max-height:80vh;
-  object-fit:contain;
-  border-radius:10px;
-  display:block;
+.modal-content video{
+  width:100%; height:100%; object-fit:contain; border-radius:10px; display:block;
 }
 .close{
   position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;
+}
+
+/* ================= MODAL IMAGE ================= */
+.image-modal{
+  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.85); z-index:10000; display:flex; justify-content:center; align-items:center;
+  padding:1rem;
+}
+.image-modal img{
+  max-width:90%; max-height:90%; border-radius:10px;
+}
+.image-close{
+  position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;
 }
 
 section{scroll-margin-top:100px;}
 </style>
 </head>
 <body>
+
+<!-- AUDIO DE FOND -->
+<audio id="backgroundMusic" src="Songsite.mp3" autoplay loop></audio>
 
 <!-- NAVIGATION -->
 <nav class="nav">
@@ -164,14 +175,14 @@ section{scroll-margin-top:100px;}
 
 <div class="org-president org-membre" data-video="Anthony_presentation.mov">
 <img src="photo-president.jpg">
-<h3>Anthony MAITREL "B-BOY Wu"</h3>
+<h3>Anthony METREL "B-BOY Wu"</h3>
 <p>Président & Fondateur</p>
 </div>
 
 <div class="org-bureau">
   <div class="org-membre" data-video="Fares_presentation.mov">
     <img src="photo-vp.jpg">
-    <h4>Farès GHALIM "Accrobate"</h4>
+    <h4>Farès "Accrobate"</h4>
     <p>Vice-Président</p>
   </div>
   <div class="org-membre" data-video="Mad_presentation.mov">
@@ -210,7 +221,7 @@ section{scroll-margin-top:100px;}
     <p>Vendredi 19h30 - 20h30</p>
   </div>
   <div class="horaire-card">
-    <h4>👑 Break Confirmé </h4>
+    <h4>👑 Break Confirmé</h4>
     <p>Mardi 20h00 - 21h30</p>
     <p>Mercredi 20h30 - 21h30</p>
     <p>Vendredi 20h30 - 21h30</p>
@@ -227,6 +238,7 @@ section{scroll-margin-top:100px;}
   <div class="event-card" data-image="Affichebattle.jpg">
     <h3>🔥 ROOKIES BATTLE #2 </h3>
     <p>Samedi 04 Avril 2026 • 18h00</p>
+    <img src="Affichebattle.jpg" alt="Affiche Battle">
   </div>
 </div>
 </div>
@@ -239,7 +251,7 @@ section{scroll-margin-top:100px;}
 <div class="contact-buttons">
   <a href="tel:0652232825">📞 Appeler</a>
   <a href="mailto:wudang@live.fr">✉️ Email</a>
-  <a href="https://www.instagram.com/associationsavoirfaire?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">📸 Instagram</a>
+  <a href="https://www.instagram.com/associationsavoirfaire?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">📸 Instagram</a>
   <a href="https://www.google.com/maps/search/?api=1&query=Parc+des+Sports,+2+Chau.+de+Ritterhude,+27100+Val-de-Reuil,+France" target="_blank">📍 Adresse</a>
 </div>
 </div>
@@ -257,96 +269,65 @@ section{scroll-margin-top:100px;}
 </div>
 
 <!-- MODAL IMAGE -->
-<div id="imageModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img id="eventImage" src="" alt="Événement">
-  </div>
+<div id="imageModal" class="image-modal">
+  <span class="image-close">&times;</span>
+  <img src="" alt="Événement">
 </div>
 
+<!-- SCRIPT -->
 <script>
-// ================= VIDEOS MEMBRES =================
 const members = document.querySelectorAll('.org-membre[data-video]');
-const videoModal = document.getElementById('videoModal');
-const videoClose = videoModal.querySelector('.close');
+const modal = document.getElementById('videoModal');
+const closeBtn = document.querySelector('.close');
 const video = document.getElementById('memberVideo');
 
+// Ouvrir modal vidéo
 members.forEach(member => {
   member.addEventListener('click', () => {
-    const src = member.getAttribute('data-video');
-    video.querySelector('source').src = src;
+    const videoSrc = member.getAttribute('data-video');
+    video.querySelector('source').src = videoSrc;
     video.load();
-    videoModal.style.display = 'flex';
+    modal.style.display = 'flex';
     video.play();
   });
 });
-
-videoClose.addEventListener('click', () => {
-  video.pause();
-  videoModal.style.display = 'none';
-});
-videoModal.addEventListener('click', (e) => {
-  if(e.target === videoModal){
-    video.pause();
-    videoModal.style.display = 'none';
-  }
-});
+closeBtn.addEventListener('click', () => { video.pause(); modal.style.display='none'; });
+modal.addEventListener('click', e => { if(e.target===modal){ video.pause(); modal.style.display='none'; } });
 let lastScroll = window.pageYOffset;
 window.addEventListener('scroll', () => {
-  if(videoModal.style.display === 'flex'){
+  if(modal.style.display==='flex'){
     const currentScroll = window.pageYOffset;
-    if(currentScroll > lastScroll){
-      video.pause();
-      videoModal.style.display = 'none';
-    }
-    lastScroll = currentScroll;
+    if(currentScroll>lastScroll){ video.pause(); modal.style.display='none'; }
+    lastScroll=currentScroll;
   }
 });
 
-// ================= IMAGES EVENEMENTS =================
-const events = document.querySelectorAll('.event-card[data-image]');
+// Ouvrir modal image
+const eventCards = document.querySelectorAll('.event-card[data-image]');
 const imageModal = document.getElementById('imageModal');
-const imageClose = imageModal.querySelector('.close');
-const eventImg = document.getElementById('eventImage');
+const imageClose = document.querySelector('.image-close');
+const modalImg = imageModal.querySelector('img');
 
-events.forEach(ev => {
-  ev.addEventListener('click', () => {
-    const src = ev.getAttribute('data-image');
-    eventImg.src = src;
+eventCards.forEach(card=>{
+  card.addEventListener('click', ()=>{
+    const imgSrc = card.getAttribute('data-image');
+    modalImg.src = imgSrc;
     imageModal.style.display = 'flex';
   });
 });
+imageClose.addEventListener('click', ()=>{ imageModal.style.display='none'; });
+imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
 
-imageClose.addEventListener('click', () => {
-  imageModal.style.display = 'none';
-});
-imageModal.addEventListener('click', (e) => {
-  if(e.target === imageModal){
-    imageModal.style.display = 'none';
-  }
-});
-let lastScrollImg = window.pageYOffset;
-window.addEventListener('scroll', () => {
-  if(imageModal.style.display === 'flex'){
-    const currentScroll = window.pageYOffset;
-    if(currentScroll > lastScrollImg){
-      imageModal.style.display = 'none';
-    }
-    lastScrollImg = currentScroll;
-  }
-});
-
-// ================= NAVIGATION SMOOTH SCROLL =================
+// Smooth scroll pour la nav
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     const navHeight = document.querySelector('.nav').offsetHeight;
     const offsetTop = target.offsetTop - navHeight;
-    window.scrollTo({ top: offsetTop, behavior:'smooth' });
+    window.scrollTo({top:offsetTop, behavior:'smooth'});
   });
 });
 </script>
-
 </body>
 </html>
