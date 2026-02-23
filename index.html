@@ -62,6 +62,27 @@ body{ font-family:'Oswald',sans-serif; background:var(--light-gray); color:var(-
 .image-modal img{max-width:90%; max-height:90%; border-radius:10px;}
 .image-close{position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;}
 section{scroll-margin-top:100px;}
+/* MODAL Giff */
+    .horaire-flex {
+  display: flex;              /* met le texte et le GIF côte à côte */
+  align-items: center;        /* centre verticalement */
+  justify-content: space-between; /* espace entre texte et GIF */
+  background: white;          /* même couleur que la carte */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.horaire-flex:hover {
+  transform: translateY(-6px);
+}
+
+.horaire-gif {
+  width: 80px;       /* taille du GIF */
+  height: 80px;
+  border-radius: 10px; /* pour que ça s’intègre visuellement */
+}
 </style>
 </head>
 <body>
@@ -144,11 +165,16 @@ window.addEventListener('load', () => {
 <p>Jeudi "Break Débutant" 19h00 - 20h00</p>
 <p>Vendredi 19h30 - 20h30</p>
 </div>
-<div class="horaire-card">
-<h4>👑 Break Confirmé</h4>
-<p>Mardi 20h00 - 21h30</p>
-<p>Mercredi 20h30 - 21h30</p>
-<p>Vendredi 20h30 - 21h30</p>
+<div class="horaire-card horaire-flex">
+  <div class="horaire-text">
+    <h4>👑 Break Confirmé</h4>
+    <p>Mardi 20h00 - 21h30</p>
+    <p>Mercredi 20h30 - 21h30</p>
+    <p>Vendredi 20h30 - 21h30</p>
+  </div>
+  <div class="horaire-gif-container">
+    <img src="Gif_dance.gif" alt="Break Confirmé GIF" class="horaire-gif">
+  </div>
 </div>
 </div>
 </div>
