@@ -9,262 +9,236 @@
 
 <style>
 :root{
-  --black:#111111;      
-  --orange:#FF6A00;     
-  --light-gray:#E5E5E5; 
+  --black:#111;
+  --orange:#FF6A00;
+  --light-gray:#E5E5E5;
   --white:#F9FAFB;
-  --dark-text:#111827;
-}
-*{margin:0; padding:0; box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Oswald',sans-serif;
-  background:var(--light-gray);
-  color:var(--dark-text);
 }
 
-/* NAVIGATION */
-.nav{position:fixed; top:0; width:100%; background:rgba(17,17,17,0.95); backdrop-filter:blur(10px); padding:1rem 0; z-index:1000;}
-.nav-container{max-width:1200px; margin:auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center;}
-.nav-logo img{height:45px; border-radius:50%;}
-.nav-links{list-style:none; display:flex; gap:2rem;}
-.nav-links a{color:var(--white); text-decoration:none; transition:0.3s;}
-.nav-links a:hover{color:var(--orange);}
-@media(max-width:768px){.nav-links{display:none;}}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Oswald',sans-serif;background:var(--light-gray);overflow-x:hidden;}
+section{padding:7rem 2rem;text-align:center;}
+.container{max-width:1200px;margin:auto;}
+h2{margin-bottom:3rem;font-size:2rem;}
+
+/* INTRO */
+#intro{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.95)),
+  url("photo_breakdance.jpeg") center/cover;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  z-index:9999;
+  text-align:center;
+  transition:1s ease;
+}
+#intro h1{
+  font-family:'Bangers',cursive;
+  font-size:clamp(3rem,8vw,6rem);
+  letter-spacing:5px;
+  background:linear-gradient(45deg,var(--orange),white);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+#enterBtn{
+  margin-top:2rem;
+  padding:1rem 3rem;
+  border:none;
+  border-radius:50px;
+  background:var(--orange);
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:.3s;
+}
+#enterBtn:hover{transform:scale(1.1);}
+.fade-out{opacity:0;visibility:hidden;}
 
 /* HEADER */
-.header{height:100vh; background: linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)), url("photo_breakdance.jpeg") center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:var(--white); padding:0 2rem; position:relative;}
-.logo{font-family:'Bangers',cursive; font-size:clamp(3rem,8vw,6rem); background:linear-gradient(45deg,var(--orange),var(--light-gray)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:5px;}
-.slogan{margin:1rem 0 2rem; font-size:1.2rem; opacity:0.9;}
-.cta-button{padding:1rem 2.5rem; border:none; border-radius:50px; background:var(--orange); color:white; font-weight:bold; text-decoration:none; transition:0.3s; display:inline-block; cursor:pointer;}
-.cta-button:hover{transform:translateY(-4px); box-shadow:0 10px 25px rgba(255,106,0,0.4);}
+.header{
+  height:100vh;
+  background:linear-gradient(rgba(17,17,17,0.85),rgba(17,17,17,0.9)),
+  url("photo_breakdance.jpeg") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+.logo{
+  font-family:'Bangers',cursive;
+  font-size:clamp(3rem,8vw,6rem);
+}
+.slogan{margin:1rem 0 2rem;}
+.cta-button{
+  padding:1rem 2rem;
+  border:none;
+  border-radius:50px;
+  background:var(--orange);
+  color:white;
+  cursor:pointer;
+}
 
-/* SECTIONS */
-.section{padding:7rem 0;}
-.container{max-width:1200px; margin:auto; padding:0 2rem; text-align:center;}
-.section-title{font-size:2.2rem; margin-bottom:3rem; position:relative; display:inline-block;}
-.section-title::after{content:""; display:block; height:3px; width:60%; margin:10px auto 0; background:var(--orange);}
+/* CARDS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:2rem;
+}
+.card{
+  background:white;
+  padding:2rem;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  cursor:pointer;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px);}
 
-/* ORGANIGRAMME */
-#organigramme{background:var(--black); color:var(--white);}
-.org-president img,.org-membre img{width:110px; height:110px; border-radius:50%; object-fit:cover; margin-bottom:1rem; border:3px solid var(--orange);}
-.org-president{margin-bottom:3rem; cursor:pointer;}
-.org-bureau{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem;}
-.org-membre{background:rgba(255,255,255,0.05); padding:1.5rem; border-radius:15px; transition:0.3s; cursor:pointer;}
-.org-membre:hover,.org-president:hover{transform:translateY(-6px); background:rgba(255,255,255,0.1);}
+/* DARK SECTION */
+.dark{background:#111;color:white;}
 
-/* HORAIRES */
-#horaires{background:var(--light-gray); color:var(--dark-text);}
-.horaires-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem;}
-.horaire-card{background:white; padding:2rem; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.08); transition:0.3s;}
-.horaire-card:hover{transform:translateY(-6px);}
+/* MODALS */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:10000;
+}
+.modal.active{display:flex;}
+.modal video,.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+.close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:2rem;
+  color:white;
+  cursor:pointer;
+}
 
-/* EVENEMENTS */
-#evenements{background:var(--black); color:var(--white);}
-.events{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;}
-.event-card{background:rgba(255,255,255,0.05); padding:2rem; border-radius:15px; transition:0.3s; cursor:pointer;}
-.event-card:hover{transform:translateY(-6px); box-shadow:0 0 20px rgba(255,106,0,0.4);}
-.event-card img{width:100%; height:auto; border-radius:10px; display:none;}
-
-/* CONTACT */
-#contact{background:var(--light-gray); color:var(--dark-text);}
-.contact-buttons a{margin:0.5rem; display:inline-block; background:var(--orange); color:white; padding:1rem 2rem; border-radius:50px; text-decoration:none; transition:0.3s;}
-.contact-buttons a:hover{transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,106,0,0.4);}
-
-/* MODAL VIDEO */
-.modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;}
-.modal-content{position:relative; width:80%; max-width:900px; max-height:80vh; background:var(--black); border-radius:10px; display:flex; justify-content:center; align-items:center; overflow:hidden;}
-.modal-content video{width:100%; height:100%; object-fit:contain; border-radius:10px;}
-.close{position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer; z-index:10001;}
-
-/* MODAL IMAGE */
-.image-modal{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:10000; display:flex; justify-content:center; align-items:center; padding:1rem;}
-.image-modal img{max-width:90%; max-height:90%; border-radius:10px;}
-.image-close{position:absolute; top:10px; right:20px; font-size:2rem; color:white; cursor:pointer;}
-
-section{scroll-margin-top:100px;}
+/* MUSIC BUTTON */
+#musicToggle{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--orange);
+  border:none;
+  color:white;
+  font-size:1.2rem;
+  padding:1rem;
+  border-radius:50%;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
 </style>
 </head>
+
 <body>
 
-<!-- AUDIO DE FOND (pas autoplay) -->
 <audio id="backgroundMusic" src="Songsite.mp3" loop></audio>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-container">
-    <div class="nav-logo"><img src="Logo1.png"></div>
-    <ul class="nav-links">
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#organigramme">Structure</a></li>
-      <li><a href="#horaires">Horaires</a></li>
-      <li><a href="#evenements">Événements</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<!-- INTRO -->
+<div id="intro">
+<h1>MOUVEMENT&ART</h1>
+<button id="enterBtn">Entrer dans l'univers</button>
+</div>
 
 <!-- HEADER -->
-<section id="accueil" class="header">
-  <h1 class="logo">MOUVEMENT&ART</h1>
-  <p class="slogan">Vivez la culture breakdance • Développez votre style • Rejoignez le Crew</p>
-  <button class="cta-button" id="startAudioBtn">Voir les Horaires & Lancer la musique</button>
+<section class="header">
+<h1 class="logo">MOUVEMENT&ART</h1>
+<p class="slogan">Vivez la culture breakdance • Développez votre style • Rejoignez le Crew</p>
 </section>
 
 <!-- ORGANIGRAMME -->
-<section id="organigramme" class="section">
+<section class="dark">
 <div class="container">
-<h2 class="section-title">Organigramme</h2>
-
-<div class="org-president org-membre" data-video="Anthony_presentation.mov">
-<img src="photo-president.jpg">
-<h3>Anthony METREL "B-BOY Wu"</h3>
-<p>Président & Fondateur</p>
-</div>
-
-<div class="org-bureau">
-  <div class="org-membre" data-video="Fares_presentation.mov">
-    <img src="photo-vp.jpg">
-    <h4>Farès "Accrobate"</h4>
-    <p>Vice-Président</p>
-  </div>
-  <div class="org-membre" data-video="Mad_presentation.mov">
-    <img src="photo-tresorier.jpg">
-    <h4>Mohamed-Amine "B-BOY MAD"</h4>
-    <p>Trésorier</p>
-  </div>
-  <div class="org-membre" data-video="Nathan_presentation.mov">
-    <img src="photo-secretaire.jpg">
-    <h4>Nathan "B-BOY TAÏ-LONG"</h4>
-    <p>Coach</p>
-  </div>
-  <div class="org-membre" data-video="Haris_presentation.mov">
-    <img src="photo-coach.jpg">
-    <h4>Haris "Muscular"</h4>
-    <p>Coach Pro</p>
-  </div>
+<h2>Organigramme</h2>
+<div class="grid">
+<div class="card" data-video="Anthony_presentation.mov">Anthony "B-BOY Wu"</div>
+<div class="card" data-video="Fares_presentation.mov">Farès "Accrobate"</div>
+<div class="card" data-video="Mad_presentation.mov">Mohamed-Amine "B-BOY MAD"</div>
+<div class="card" data-video="Nathan_presentation.mov">Nathan "TAÏ-LONG"</div>
 </div>
 </div>
 </section>
 
-<!-- HORAIRES -->
-<section id="horaires" class="section">
-<div class="container">
-<h2 class="section-title">Horaires</h2>
-<div class="horaires-grid">
-  <div class="horaire-card">
-    <h4>🔥 Acrobatie</h4>
-    <p>Lundi 20h00 - 21h30</p>
-    <p>Jeudi 20h15 - 21h30</p>
-  </div>
-  <div class="horaire-card">
-    <h4>⚡ Break Débutant</h4>
-    <p>Jeudi "Break Eveil" 18h00 - 19h00</p>
-    <p>Jeudi "Break Débutant" 19h00 - 20h00</p>
-    <p>Vendredi 19h30 - 20h30</p>
-  </div>
-  <div class="horaire-card">
-    <h4>👑 Break Confirmé</h4>
-    <p>Mardi 20h00 - 21h30</p>
-    <p>Mercredi 20h30 - 21h30</p>
-    <p>Vendredi 20h30 - 21h30</p>
-  </div>
-</div>
-</div>
-</section>
-
-<!-- EVENEMENTS -->
-<section id="evenements" class="section">
-<div class="container">
-<h2 class="section-title">Prochains Événements</h2>
-<div class="events">
-  <div class="event-card" data-image="Affichebattle.jpg">
-    <h3>🔥 ROOKIES BATTLE #2 </h3>
-    <p>Samedi 04 Avril 2026 • 18h00</p>
-    <img src="Affichebattle.jpg" alt="Affiche Battle">
-  </div>
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section">
-<div class="container">
-<h2 class="section-title">Rejoignez-nous</h2>
-<div class="contact-buttons">
-  <a href="tel:0652232825">📞 Appeler</a>
-  <a href="mailto:wudang@live.fr">✉️ Email</a>
-  <a href="https://www.instagram.com/associationsavoirfaire" target="_blank">📸 Instagram</a>
-  <a href="https://www.google.com/maps/search/?api=1&query=Parc+des+Sports,+2+Chau.+de+Ritterhude,+27100+Val-de-Reuil,+France" target="_blank">📍 Adresse</a>
-</div>
-</div>
-</section>
-
-<!-- MODALE VIDEO -->
-<div id="videoModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <video id="memberVideo" controls>
-      <source src="" type="video/mp4">
-    </video>
-  </div>
+<!-- MODAL -->
+<div id="modal" class="modal">
+<span class="close">&times;</span>
+<video id="modalVideo" controls></video>
 </div>
 
-<!-- MODALE IMAGE -->
-<div id="imageModal" class="image-modal">
-  <span class="image-close">&times;</span>
-  <img src="" alt="Événement">
-</div>
+<button id="musicToggle">🔊</button>
 
-<!-- SCRIPT -->
 <script>
-const members = document.querySelectorAll('.org-membre[data-video]');
-const videoModal = document.getElementById('videoModal');
-const closeVideo = document.querySelector('.close');
-const video = document.getElementById('memberVideo');
+const intro=document.getElementById("intro");
+const enterBtn=document.getElementById("enterBtn");
+const music=document.getElementById("backgroundMusic");
+const musicToggle=document.getElementById("musicToggle");
+let musicPlaying=false;
 
-members.forEach(member => {
-  member.addEventListener('click', () => {
-    video.querySelector('source').src = member.getAttribute('data-video');
-    video.load();
-    videoModal.style.display = 'flex';
-    video.play();
+/* INTRO CLICK */
+enterBtn.addEventListener("click",()=>{
+  intro.classList.add("fade-out");
+  startMusic();
+});
+
+/* FADE IN MUSIC */
+function startMusic(){
+  music.volume=0;
+  music.play();
+  musicPlaying=true;
+  let vol=0;
+  const fade=setInterval(()=>{
+    if(vol<0.8){
+      vol+=0.05;
+      music.volume=vol;
+    }else clearInterval(fade);
+  },200);
+}
+
+/* MUSIC TOGGLE */
+musicToggle.addEventListener("click",()=>{
+  if(musicPlaying){
+    music.pause();
+    musicToggle.textContent="🔈";
+  }else{
+    music.play();
+    musicToggle.textContent="🔊";
+  }
+  musicPlaying=!musicPlaying;
+});
+
+/* VIDEO MODAL */
+const modal=document.getElementById("modal");
+const modalVideo=document.getElementById("modalVideo");
+
+document.querySelectorAll(".card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    modalVideo.src=card.dataset.video;
+    modal.classList.add("active");
+    modalVideo.play();
   });
 });
 
-closeVideo.addEventListener('click', () => { video.pause(); videoModal.style.display='none'; });
-videoModal.addEventListener('click', e => { if(e.target===videoModal){ video.pause(); videoModal.style.display='none'; } });
-
-const eventCards = document.querySelectorAll('.event-card[data-image]');
-const imageModal = document.getElementById('imageModal');
-const closeImage = document.querySelector('.image-close');
-const modalImg = imageModal.querySelector('img');
-
-eventCards.forEach(card => {
-  card.addEventListener('click', () => {
-    modalImg.src = card.getAttribute('data-image');
-    imageModal.style.display = 'flex';
-  });
-});
-
-closeImage.addEventListener('click', () => { imageModal.style.display='none'; });
-imageModal.addEventListener('click', e => { if(e.target===imageModal){ imageModal.style.display='none'; } });
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e){
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    const navHeight = document.querySelector('.nav').offsetHeight;
-    const offsetTop = target.offsetTop - navHeight;
-    window.scrollTo({top:offsetTop, behavior:'smooth'});
-  });
-});
-
-// Bouton lancer musique
-document.getElementById('startAudioBtn').addEventListener('click', () => {
-  document.getElementById('backgroundMusic').play();
-});
+function closeModal(){
+  modal.classList.remove("active");
+  modalVideo.pause();
+}
+document.querySelector(".close").onclick=closeModal;
+modal.onclick=e=>{if(e.target===modal)closeModal();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
 </script>
 
 </body>
