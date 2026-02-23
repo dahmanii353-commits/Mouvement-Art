@@ -24,7 +24,7 @@ body{
   color:var(--dark-text);
 }
 
-/* NAV */
+/* NAVIGATION */
 .nav{
   position:fixed;
   top:0;
@@ -106,11 +106,8 @@ body{
 /* ORGANIGRAMME */
 #organigramme{background:var(--black);color:var(--white);}
 .org-president img,.org-membre img{
-  width:110px;
-  height:110px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:1rem;
+  width:110px;height:110px;border-radius:50%;
+  object-fit:cover;margin-bottom:1rem;
   border:3px solid var(--orange);
 }
 .org-president{margin-bottom:3rem;cursor:pointer;}
@@ -126,8 +123,7 @@ body{
   transition:0.3s;
   cursor:pointer;
 }
-.org-membre:hover,
-.org-president:hover{
+.org-membre:hover,.org-president:hover{
   transform:translateY(-6px);
   background:rgba(255,255,255,0.1);
 }
@@ -182,44 +178,35 @@ body{
   box-shadow:0 8px 20px rgba(255,106,0,0.4);
 }
 
-/* MODALES (CORRIGÉES) */
+/* MODALES CORRIGÉES */
 .modal,
 .image-modal{
-  display:none; /* IMPORTANT */
+  display:none;
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:0;left:0;
+  width:100%;height:100%;
   background:rgba(0,0,0,0.85);
   z-index:10000;
   justify-content:center;
   align-items:center;
   padding:1rem;
 }
-
 .modal-content{
   position:relative;
   width:80%;
   max-width:900px;
 }
-
 .modal-content video,
 .image-modal img{
   width:100%;
   border-radius:10px;
 }
-
-.close,
-.image-close{
+.close,.image-close{
   position:absolute;
-  top:15px;
-  right:25px;
-  font-size:2rem;
-  color:white;
+  top:15px;right:25px;
+  font-size:2rem;color:white;
   cursor:pointer;
 }
-
 section{scroll-margin-top:100px;}
 </style>
 </head>
@@ -249,46 +236,58 @@ section{scroll-margin-top:100px;}
 <button class="cta-button" id="startAudioBtn">Voir les Horaires & Lancer la musique</button>
 </section>
 
-<!-- ORGANIGRAMME -->
-<section id="organigramme" class="section">
+<!-- HORAIRES -->
+<section id="horaires" class="section">
 <div class="container">
-<h2 class="section-title">Organigramme</h2>
-
-<div class="org-president org-membre" data-video="Anthony_presentation.mov">
-<img src="photo-president.jpg">
-<h3>Anthony METREL "B-BOY Wu"</h3>
-<p>Président & Fondateur</p>
+<h2 class="section-title">Horaires</h2>
+<div class="horaires-grid">
+<div class="horaire-card">
+<h4>🔥 Acrobatie</h4>
+<p>Lundi 20h00 - 21h30</p>
+<p>Jeudi 20h15 - 21h30</p>
 </div>
-
-<div class="org-bureau">
-<div class="org-membre" data-video="Fares_presentation.mov">
-<img src="photo-vp.jpg">
-<h4>Farès "Accrobate"</h4>
-<p>Vice-Président</p>
+<div class="horaire-card">
+<h4>⚡ Break Débutant</h4>
+<p>Jeudi 18h00 - 20h00</p>
+<p>Vendredi 19h30 - 20h30</p>
 </div>
-
-<div class="org-membre" data-video="Mad_presentation.mov">
-<img src="photo-tresorier.jpg">
-<h4>Mohamed-Amine "B-BOY MAD"</h4>
-<p>Trésorier</p>
-</div>
-
-<div class="org-membre" data-video="Nathan_presentation.mov">
-<img src="photo-secretaire.jpg">
-<h4>Nathan "B-BOY TAÏ-LONG"</h4>
-<p>Coach</p>
-</div>
-
-<div class="org-membre" data-video="Haris_presentation.mov">
-<img src="photo-coach.jpg">
-<h4>Haris "Muscular"</h4>
-<p>Coach Pro</p>
+<div class="horaire-card">
+<h4>👑 Break Confirmé</h4>
+<p>Mardi 20h00 - 21h30</p>
+<p>Mercredi 20h30 - 21h30</p>
+<p>Vendredi 20h30 - 21h30</p>
 </div>
 </div>
 </div>
 </section>
 
-<!-- MODALE VIDEO -->
+<!-- EVENEMENTS -->
+<section id="evenements" class="section">
+<div class="container">
+<h2 class="section-title">Prochains Événements</h2>
+<div class="events">
+<div class="event-card" data-image="Affichebattle.jpg">
+<h3>🔥 ROOKIES BATTLE #2</h3>
+<p>Samedi 04 Avril 2026 • 18h00</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+<div class="container">
+<h2 class="section-title">Rejoignez-nous</h2>
+<div class="contact-buttons">
+<a href="tel:0652232825">📞 Appeler</a>
+<a href="mailto:wudang@live.fr">✉️ Email</a>
+<a href="https://www.instagram.com/associationsavoirfaire" target="_blank">📸 Instagram</a>
+<a href="https://www.google.com/maps/search/?api=1&query=Parc+des+Sports,+Val-de-Reuil" target="_blank">📍 Adresse</a>
+</div>
+</div>
+</section>
+
+<!-- MODALES -->
 <div id="videoModal" class="modal">
 <div class="modal-content">
 <span class="close">&times;</span>
@@ -296,35 +295,13 @@ section{scroll-margin-top:100px;}
 </div>
 </div>
 
-<!-- MODALE IMAGE -->
 <div id="imageModal" class="image-modal">
 <span class="image-close">&times;</span>
 <img id="eventImage">
 </div>
 
 <script>
-// VIDEO
-const videoModal=document.getElementById("videoModal");
-const video=document.getElementById("memberVideo");
-
-document.querySelectorAll(".org-membre").forEach(member=>{
-member.addEventListener("click",()=>{
-video.src=member.dataset.video;
-videoModal.style.display="flex";
-video.play();
-});
-});
-
-function closeVideo(){
-video.pause();
-videoModal.style.display="none";
-}
-document.querySelector(".close").addEventListener("click",closeVideo);
-videoModal.addEventListener("click",e=>{
-if(e.target===videoModal) closeVideo();
-});
-
-// IMAGE
+// IMAGE MODAL
 const imageModal=document.getElementById("imageModal");
 const eventImage=document.getElementById("eventImage");
 
@@ -335,17 +312,10 @@ imageModal.style.display="flex";
 });
 });
 
-function closeImage(){
-imageModal.style.display="none";
-}
+function closeImage(){imageModal.style.display="none";}
 document.querySelector(".image-close").addEventListener("click",closeImage);
 imageModal.addEventListener("click",e=>{
 if(e.target===imageModal) closeImage();
-});
-
-// AUDIO
-document.getElementById("startAudioBtn").addEventListener("click",()=>{
-document.getElementById("backgroundMusic").play();
 });
 </script>
 
