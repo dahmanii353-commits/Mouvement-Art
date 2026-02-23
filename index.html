@@ -66,7 +66,16 @@ section{scroll-margin-top:100px;}
 </head>
 <body>
 <!-- AUDIO DE FOND (pas autoplay) -->
-<audio id="backgroundMusic" src="Songsite.mp3" loop></audio>
+<audio id="backgroundMusic" src="Songsite.mp3" loop autoplay muted></audio>
+<script>
+window.addEventListener('load', () => {
+    const audio = document.getElementById('backgroundMusic');
+    audio.muted = false; // démute si possible
+    audio.play().catch(() => {
+        console.log("Autoplay bloqué, l'utilisateur devra cliquer pour démarrer la musique.");
+    });
+});
+</script>
 <!-- NAV -->
 <nav class="nav">
 <div class="nav-container">
@@ -84,7 +93,7 @@ section{scroll-margin-top:100px;}
 <section id="accueil" class="header">
 <h1 class="logo">MOUVEMENT&ART</h1>
 <p class="slogan">Vivez la culture breakdance • Développez votre style • Rejoignez le Crew</p>
-<button class="cta-button" id="startAudioBtn">Voir les Horaires & Lancer la musique</button>
+<button class="cta-button" id="startAudioBtn">Voir les Horaires</button>
 </section>
 <!-- ORGANIGRAMME -->
 <section id="organigramme" class="section">
